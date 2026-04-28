@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Exceptions;
+use Illuminate\Foundation\Configuration\Middleware;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        commands: __DIR__.'/../routes/console.php',
+        health: '/up',
+    )
+    ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->alias([
+            'admin'              => \App\Http\Middleware\AdminMiddleware::class,
+            'admin.pin'          => \App\Http\Middleware\RequireAdminPin::class,
+            'admin.lock'         => \App\Http\Middleware\AdminRouteLock::class,
+            'menu.check'         => \App\Http\Middleware\CheckMenuEnabled::class,
+            'affiliate.auth'     => \App\Http\Middleware\AffiliateAuth::class,
+            'affiliate.approved' => \App\Http\Middleware\AffiliateApproved::class,
+        ]);
+
+        // Auto-check menu enabled status on every web request
+        $middleware->appendToGroup('web', \App\Http\Middleware\CheckMenuEnabled::class);
+
+        
+        // Exclude CSRF for OAuth callbacks
+        $middleware->validateCsrfTokens(except: [
+            'auth/*',
+        ]);
+    })
+    ->withExceptions(function (Exceptions $exceptions): void {
+        //
+    })->create();
