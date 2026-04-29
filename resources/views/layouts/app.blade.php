@@ -20,6 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="google-site-verification" content="JXAkwIu8Sp6m3NoBdys1fP9YRH7eeUiiVQ49OEGUSqw" />
+    <meta name="google-site-verification" content="mTt55Abh28mF85KpBynAhj-j6QTif4Nay-T5Yv4yxGc" />
     <title>@yield('title', 'Dùng Thử | AI | Blog | Khám Phá')</title>
     <meta name="description" content="@yield('meta_description', 'Dùng Thử - Nền tảng khám phá AI, Blog công nghệ và sản phẩm số hàng đầu Việt Nam. Trải nghiệm & Mua sắm an toàn, chất lượng.')">
     <meta name="keywords" content="@yield('meta_keywords', 'dung thu, dungthu, dungthu.com, dung thu ai, blog cong nghe, mua sam truc tuyen, san pham so, kham pha ai')">

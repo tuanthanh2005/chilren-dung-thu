@@ -158,22 +158,22 @@ Route::middleware('auth')->group(function () {
 // Admin routes (requires auth and admin role)
 Route::middleware(['auth', 'admin', 'admin.pin', 'admin.lock'])->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    
+
     // PIN Verification
     Route::get('/verify-pin', [AdminController::class, 'showVerifyPin'])->name('admin.verify-pin');
     Route::post('/verify-pin', [AdminController::class, 'verifyPin'])->name('admin.verify-pin.post');
     Route::get('/lock', [AdminController::class, 'lockAdmin'])->name('admin.lock');
-    
+
     // Order Management
     Route::get('/orders', [AdminController::class, 'orders'])->name('admin.orders');
     Route::get('/orders/{order}', [AdminController::class, 'showOrder'])->name('admin.orders.show');
     Route::put('/orders/{order}/status', [AdminController::class, 'updateOrderStatus'])->name('admin.orders.update-status');
     Route::delete('/orders/{order}', [AdminController::class, 'deleteOrder'])->name('admin.orders.delete');
-    
+
     // User Management
     Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
     Route::get('/users/{user}/history', [AdminController::class, 'userHistory'])->name('admin.users.history');
-    
+
     // Product Management
     Route::get('/products', [AdminController::class, 'products'])->name('admin.products');
     Route::get('/products/create/{category?}', [AdminController::class, 'createProduct'])->name('admin.products.create');
@@ -191,7 +191,7 @@ Route::middleware(['auth', 'admin', 'admin.pin', 'admin.lock'])->prefix('admin')
     Route::get('/categories/{category}/edit', [AdminController::class, 'editCategory'])->name('admin.categories.edit');
     Route::put('/categories/{category}', [AdminController::class, 'updateCategory'])->name('admin.categories.update');
     Route::delete('/categories/{category}', [AdminController::class, 'deleteCategory'])->name('admin.categories.delete');
-    
+
     // Features Management
     Route::get('/features', [AdminController::class, 'features'])->name('admin.features');
     Route::get('/features/create', [AdminController::class, 'createFeature'])->name('admin.features.create');
@@ -199,7 +199,7 @@ Route::middleware(['auth', 'admin', 'admin.pin', 'admin.lock'])->prefix('admin')
     Route::get('/features/{feature}/edit', [AdminController::class, 'editFeature'])->name('admin.features.edit');
     Route::put('/features/{feature}', [AdminController::class, 'updateFeature'])->name('admin.features.update');
     Route::delete('/features/{feature}', [AdminController::class, 'deleteFeature'])->name('admin.features.delete');
-    
+
     // Blog Management
     Route::get('/blogs', [AdminController::class, 'blogs'])->name('admin.blogs');
     Route::get('/blogs/create', [AdminController::class, 'createBlog'])->name('admin.blogs.create');
@@ -212,7 +212,7 @@ Route::middleware(['auth', 'admin', 'admin.pin', 'admin.lock'])->prefix('admin')
     Route::post('/google-indexing/submit-url', [GoogleIndexingController::class, 'submitUrl'])->name('admin.google-indexing.submit-url');
     Route::get('/google-indexing/recent', [GoogleIndexingController::class, 'recent'])->name('admin.google-indexing.recent');
     Route::get('/google-indexing/status', [GoogleIndexingController::class, 'status'])->name('admin.google-indexing.status');
-    
+
     // Tiktok Deals Management
     Route::get('/tiktok-deals', [TiktokDealController::class, 'index'])->name('admin.tiktok-deals.index');
     Route::get('/tiktok-deals/create', [TiktokDealController::class, 'create'])->name('admin.tiktok-deals.create');
@@ -224,7 +224,7 @@ Route::middleware(['auth', 'admin', 'admin.pin', 'admin.lock'])->prefix('admin')
 
     // Buff Management
     Route::get('/buff-dashboard', [AdminBuffController::class, 'dashboard'])->name('admin.buff.dashboard');
-    
+
     // Buff Servers Management
     Route::get('/buff-servers', [AdminBuffController::class, 'serversIndex'])->name('admin.buff.servers.index');
     Route::get('/buff-servers/create', [AdminBuffController::class, 'serversCreate'])->name('admin.buff.servers.create');
@@ -232,7 +232,7 @@ Route::middleware(['auth', 'admin', 'admin.pin', 'admin.lock'])->prefix('admin')
     Route::get('/buff-servers/{buffServer}/edit', [AdminBuffController::class, 'serversEdit'])->name('admin.buff.servers.edit');
     Route::put('/buff-servers/{buffServer}', [AdminBuffController::class, 'serversUpdate'])->name('admin.buff.servers.update');
     Route::delete('/buff-servers/{buffServer}', [AdminBuffController::class, 'serversDestroy'])->name('admin.buff.servers.destroy');
-    
+
     // Buff Services Management
     Route::get('/buff-services', [AdminBuffController::class, 'servicesIndex'])->name('admin.buff.services.index');
     Route::get('/buff-services/create', [AdminBuffController::class, 'servicesCreate'])->name('admin.buff.services.create');
@@ -240,7 +240,7 @@ Route::middleware(['auth', 'admin', 'admin.pin', 'admin.lock'])->prefix('admin')
     Route::get('/buff-services/{buffService}/edit', [AdminBuffController::class, 'servicesEdit'])->name('admin.buff.services.edit');
     Route::put('/buff-services/{buffService}', [AdminBuffController::class, 'servicesUpdate'])->name('admin.buff.services.update');
     Route::delete('/buff-services/{buffService}', [AdminBuffController::class, 'servicesDestroy'])->name('admin.buff.services.destroy');
-    
+
     // Buff Server Prices Management
     Route::get('/buff-prices', [AdminBuffController::class, 'pricesIndex'])->name('admin.buff.prices.index');
     Route::get('/buff-prices/create', [AdminBuffController::class, 'pricesCreate'])->name('admin.buff.prices.create');
@@ -248,7 +248,7 @@ Route::middleware(['auth', 'admin', 'admin.pin', 'admin.lock'])->prefix('admin')
     Route::get('/buff-prices/{buffServerPrice}/edit', [AdminBuffController::class, 'pricesEdit'])->name('admin.buff.prices.edit');
     Route::put('/buff-prices/{buffServerPrice}', [AdminBuffController::class, 'pricesUpdate'])->name('admin.buff.prices.update');
     Route::delete('/buff-prices/{buffServerPrice}', [AdminBuffController::class, 'pricesDestroy'])->name('admin.buff.prices.destroy');
-    
+
     // Buff Orders Management
     Route::get('/buff-orders', [AdminBuffController::class, 'ordersIndex'])->name('admin.buff.orders.index');
     Route::get('/buff-orders/{buffOrder}', [AdminBuffController::class, 'ordersShow'])->name('admin.buff.orders.show');
@@ -261,7 +261,7 @@ Route::middleware(['auth', 'admin', 'admin.pin', 'admin.lock'])->prefix('admin')
     // System Notifications
     Route::get('/system-notifications', [AdminController::class, 'systemNotifications'])->name('admin.system-notifications');
     Route::post('/system-notifications/send', [AdminController::class, 'sendSystemNotifications'])->name('admin.system-notifications.send');
-    
+
     // Card Exchange Management
     Route::get('/card-exchanges', [AdminController::class, 'cardExchanges'])->name('admin.card-exchanges');
     Route::put('/card-exchanges/{cardExchange}/status', [AdminController::class, 'updateCardExchangeStatus'])->name('admin.card-exchanges.update-status');
@@ -337,12 +337,12 @@ Route::prefix('cong-tac-vien')->group(function () {
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
 // Test email route
-Route::get('/test-email', function() {
+Route::get('/test-email', function () {
     $order = \App\Models\Order::first();
     if (!$order) {
         return 'Không tìm thấy đơn hàng nào để test';
     }
-    
+
     try {
         \Illuminate\Support\Facades\Mail::to($order->customer_email)->send(
             new \App\Mail\OrderCompletedMail($order, 'testuser_demo_' . $order->id, 'Cudanmangorg_1')
