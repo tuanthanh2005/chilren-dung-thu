@@ -7,6 +7,9 @@
     $menuBuff        = \App\Models\SiteSetting::getValue('menu_buff', '1') === '1';
     $menuCommunity   = \App\Models\SiteSetting::getValue('menu_community', '1') === '1';
     $menuCardExchange = \App\Models\SiteSetting::getValue('menu_card_exchange', '1') === '1';
+    
+    $zaloLink = \App\Models\SiteSetting::getValue('zalo_group_link', 'https://zalo.me/g/ptarfhnomeuotiyk7cot');
+    $zaloText = \App\Models\SiteSetting::getValue('zalo_group_text', 'Nhóm Zalo');
 @endphp
 
 <nav class="navbar navbar-expand-lg navbar-techfeed sticky-top" id="mainNavbar">
@@ -56,8 +59,8 @@
                 Cộng đồng
             </a>
             @endif
-            <a href="https://zalo.me/g/ifaku0ggmtg4xhxi7k0u" target="_blank" class="nav-text-link fw-bold" style="color: #0068ff;">
-                Nhóm Zalo
+            <a href="{{ $zaloLink }}" target="_blank" class="nav-text-link fw-bold" style="color: #0068ff;">
+                {{ $zaloText }}
             </a>
             <a href="{{ route('affiliate.login') }}" class="nav-text-link {{ request()->is('cong-tac-vien*') ? 'active' : '' }}">
                 CTV
@@ -129,7 +132,7 @@
                         @if($menuCommunity)
                             <li class="d-lg-none"><a class="dropdown-item" href="{{ route('community.index') }}"><i class="fas fa-users me-2 text-success"></i>Cộng đồng</a></li>
                         @endif
-                        <li class="d-lg-none"><a class="dropdown-item fw-bold" href="https://zalo.me/g/ifaku0ggmtg4xhxi7k0u" target="_blank" style="color: #0068ff;"><i class="fas fa-users me-2"></i>Nhóm Thành Viên</a></li>
+                        <li class="d-lg-none"><a class="dropdown-item fw-bold" href="{{ $zaloLink }}" target="_blank" style="color: #0068ff;"><i class="fas fa-users me-2"></i>{{ $zaloText }}</a></li>
                         <li class="d-lg-none"><hr class="dropdown-divider"></li>
 
                         <li><a class="dropdown-item" href="{{ route('user.account') }}"><i class="fas fa-user me-2"></i>Tài khoản</a></li>
@@ -189,9 +192,9 @@
         <span>Giỏ hàng</span>
     </a>
     @endif
-    <a href="https://zalo.me/g/ifaku0ggmtg4xhxi7k0u" target="_blank" class="mobile-nav-item">
+    <a href="{{ $zaloLink }}" target="_blank" class="mobile-nav-item">
         <i class="fa-solid fa-users" style="color: #0068ff;"></i>
-        <span style="color: #0068ff; font-weight: bold;">Nhóm</span>
+        <span style="color: #0068ff; font-weight: bold;">{{ $zaloText }}</span>
     </a>
     {{--
     <a href="{{ route('affiliate.login') }}" class="mobile-nav-item {{ request()->is('cong-tac-vien*') ? 'active' : '' }}">

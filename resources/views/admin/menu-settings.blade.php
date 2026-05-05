@@ -360,6 +360,8 @@
 
 
 
+                </div>
+
                 {{-- Thêm cài đặt Top Mua Hàng (Fake Orders) --}}
                 <div class="settings-header mt-5">
                     <h2><i class="fas fa-crown me-2"></i>Cài đặt Top Mua Hàng</h2>
@@ -394,6 +396,37 @@
                                 <span class="input-group-text bg-white border-end-0"><i class="fas fa-plus text-muted"></i></span>
                                 <input type="number" class="form-control border-start-0 ps-0" name="fake_orders_top3" value="{{ \App\Models\SiteSetting::getValue('fake_orders_top3', '10') }}" min="0">
                                 <span class="input-group-text bg-light">đơn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Thêm cài đặt Liên kết (Zalo, etc) --}}
+                <div class="settings-header mt-5">
+                    <h2><i class="fa-brands fa-whatsapp me-2"></i>Cài đặt Liên kết Hỗ trợ</h2>
+                    <p class="text-muted mb-0">Quản lý các liên kết mạng xã hội và nhóm hỗ trợ khách hàng.</p>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="menu-item-row flex-column align-items-start">
+                            <label class="form-label fw-bold mb-2"><i class="fa-brands fa-whatsapp text-primary me-1"></i> Link Nhóm Zalo</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0"><i class="fas fa-link text-muted"></i></span>
+                                <input type="text" class="form-control border-start-0 ps-0" name="zalo_group_link" 
+                                    value="{{ \App\Models\SiteSetting::getValue('zalo_group_link', 'https://zalo.me/g/ptarfhnomeuotiyk7cot') }}" 
+                                    placeholder="https://zalo.me/g/...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="menu-item-row flex-column align-items-start">
+                            <label class="form-label fw-bold mb-2"><i class="fas fa-tag text-primary me-1"></i> Tên hiển thị Zalo</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0"><i class="fas fa-pen text-muted"></i></span>
+                                <input type="text" class="form-control border-start-0 ps-0" name="zalo_group_text" 
+                                    value="{{ \App\Models\SiteSetting::getValue('zalo_group_text', 'Nhóm Zalo') }}" 
+                                    placeholder="Ví dụ: Nhóm Zalo, Nhóm Hỗ Trợ...">
                             </div>
                         </div>
                     </div>

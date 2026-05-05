@@ -1201,6 +1201,14 @@ class AdminController extends Controller
             SiteSetting::setValue($key, $request->has($key) ? '1' : '0');
         }
 
+        // Save Link settings (Zalo, etc)
+        $linkKeys = ['zalo_group_link', 'zalo_group_text'];
+        foreach ($linkKeys as $key) {
+            if ($request->has($key)) {
+                SiteSetting::setValue($key, $request->input($key));
+            }
+        }
+
         // Save fake orders settings
         $fakeOrdersKeys = ['fake_orders_top1', 'fake_orders_top2', 'fake_orders_top3'];
         foreach ($fakeOrdersKeys as $key) {
